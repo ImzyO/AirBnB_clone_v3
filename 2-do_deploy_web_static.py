@@ -4,11 +4,7 @@ from os.path import exists
 from datetime import datetime
 from fabric.api import local, env, put, run
 
-env.use_ssh_config = True
-env.user = 'ubuntu'
 env.hosts = ['3.229.120.108', '44.192.24.108']
-env.key_filename = '~/.ssh/authorized_keys'
-
 
 def do_pack():
     """Function compresses file"""
