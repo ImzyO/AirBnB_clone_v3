@@ -5,6 +5,9 @@ from datetime import datetime
 from fabric.api import local, env, put, run
 
 env.hosts = ['3.229.120.108', '44.192.24.108']
+env.use_ssh_config = True
+env.user = 'ubuntu'
+env.key_filename = '~/.ssh/school'
 
 def do_pack():
     """Function compresses file"""
