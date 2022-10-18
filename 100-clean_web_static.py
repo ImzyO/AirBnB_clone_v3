@@ -58,7 +58,7 @@ def deploy():
     d = do_deploy(filepath)
     return d 
     
-    def do_clean(number=0):
+def do_clean(number=0):
     """Deletes out-of-date archives"""
     files = local("ls -1t versions", capture=True)
     file_names = files.split("\n")
@@ -72,4 +72,4 @@ def deploy():
     for i in dir_server_names[n:]:
         if i is 'test':
             continue
-        run("rm -rf /data/web_static/releases/{}".format(i))
+        run("rm -rf /data/web_static/releases/{}".format(i))            
