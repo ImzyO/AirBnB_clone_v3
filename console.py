@@ -14,8 +14,6 @@ from models.review import Review
 from datetime import datetime
 from shlex import split
 
-sys.path.append(models)
-
 class HBNBCommand(cmd.Cmd):
     """ Contains the functionality for the HBNB console"""
 
