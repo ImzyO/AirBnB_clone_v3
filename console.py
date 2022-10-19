@@ -3,6 +3,7 @@
 import cmd
 import sys
 import models
+from models import storage
 from models.base_model import BaseModel
 from models.user import User
 from models.place import Place
@@ -12,7 +13,6 @@ from models.amenity import Amenity
 from models.review import Review
 from datetime import datetime
 from shlex import split
-from models import storage
 
 class HBNBCommand(cmd.Cmd):
     """ Contains the functionality for the HBNB console"""
