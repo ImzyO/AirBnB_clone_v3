@@ -110,5 +110,31 @@ class TestFileStorage(unittest.TestCase):
         states = storage.all(State)
         self.assertEqual(states, {})
 
+    @unittest.skipIf(getenv('HBNB_TYPE_STORAGE') == 'db', "not testing file storage")
+    def test_get(self):
+        """ Tests method for obtaining an instance file storage"""
+        storage = FileStorage()
+        dic = {"name": "Colorado"}
+        instance = State(**dic)
+        self.new(instance)
+        self.save()
+        storage = FileStorage()
+        get_instance = storage.get(State, instance.id)
+        self.assertEqual(get_instance, instance)
+
+    @unittest.skipIf(getenv('HBNB_TYPE_STORAGE') == 'db', "not testing file storage")
+    def test_count(self):
+        """ Tests count method file storage """
+        storage = FileStorage()
+        dic = {"name": "Arizona"}
+        state = State(**dic)
+        storage.new(state)
+        dic = {"name": "Mexico"}
+        city = City(**dic)
+        storage.new(city)
+        storage.save()
+        c = storage.count()
+        self.assertEqual(len(storage.all()), c)
+
 if __name__ == "__main__":
     unittest.main()
