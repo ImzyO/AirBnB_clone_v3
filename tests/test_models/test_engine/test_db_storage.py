@@ -102,6 +102,27 @@ class TestDBStorage(unittest.TestCase):
         self.assertTrue(obj._DBStorage__session is None)
         obj.reload()
         self.assertTrue(obj._DBStorage__session is not None)
+    
+    def test_get(self):
+        """test get method"""
+        dictio = {"name" : "Colorado"}
+        instance = State(**dictio)
+        self.new(instance)
+        self.save()
+        get_instance = self.save(State, instane.id)
+        self.assertEqual(get_instance, instance)
+
+    def test_count(self):
+        """test count"""
+        dic = {"name": "Arizona"}
+        state = State(**dic)
+        storage.new(state)
+        dic = {"name": "Mexico", "state_id": state.id}
+        city = City(**dic)
+        storage.new(city)
+        storage.save()
+        c = storage.count()
+        self.assertEqual(len(storage.all()), c)
 
 if __name__ == "__main__":
     unittest.main()

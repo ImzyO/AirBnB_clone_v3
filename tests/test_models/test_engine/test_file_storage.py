@@ -110,6 +110,5 @@ class TestFileStorage(unittest.TestCase):
         states = storage.all(State)
         self.assertEqual(states, {})
 
-
 if __name__ == "__main__":
     unittest.main()
