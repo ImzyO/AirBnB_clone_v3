@@ -1,14 +1,10 @@
 #!/usr/bin/python3
-<<<<<<< HEAD
-=======
 """a new view for State objects that handles all default RESTFul API actions:"""
 from models.state import State
 from models import storage
 from api.v1.views import app_views
 from flask import abort, jsonify, make_response, request
 from flasgger.utils import swag_from
->>>>>>> 19a5688b8567e98d556e835d529dd443a6058e05
-
 
 @app_views.route('/states', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/state/get_state.yml', methods=['GET'])
@@ -36,9 +32,7 @@ def get_state(state_id):
                  strict_slashes=False)
 @swag_from('documentation/state/delete_state.yml', methods=['DELETE'])
 def delete_state(state_id):
-    """
-    Deletes a State Object
-    """
+    """Deletes a State Object"""
 
     state = storage.get(State, state_id)
 
@@ -54,9 +48,7 @@ def delete_state(state_id):
 @app_views.route('/states', methods=['POST'], strict_slashes=False)
 @swag_from('documentation/state/post_state.yml', methods=['POST'])
 def post_state():
-    """
-    Creates a State
-    """
+    """State created"""
     if not request.get_json():
         abort(400, description="Not a JSON")
 
@@ -72,9 +64,7 @@ def post_state():
 @app_views.route('/states/<state_id>', methods=['PUT'], strict_slashes=False)
 @swag_from('documentation/state/put_state.yml', methods=['PUT'])
 def put_state(state_id):
-    """
-    Updates a State
-    """
+    """State update"""
     state = storage.get(State, state_id)
 
     if not state:
